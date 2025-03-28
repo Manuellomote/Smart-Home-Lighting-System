@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "author": "Manuellomote",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 44.4,
+      "left": 186.6,
+      "attrs": { "color": "red", "flip": "" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 80.75,
+      "left": 124.8,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": 117.48,
+      "left": -158.7,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -118.4,
+      "left": 159.2,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "led1:C", "r1:2", "black", [ "v0" ] ],
+    [ "r1:1", "esp:GND.3", "black", [ "v0" ] ],
+    [ "led1:A", "esp:18", "red", [ "v0" ] ],
+    [ "pir1:VCC", "esp:5V", "red", [ "h38.4", "v86.4" ] ],
+    [ "pir1:OUT", "esp:13", "green", [ "h48", "v57.74" ] ],
+    [ "pir1:GND", "esp:GND.1", "black", [ "h57.6", "v57.86" ] ],
+    [ "lcd1:VCC", "esp:5V", "red", [ "h-19.2", "v105.7", "h86.4", "v192", "h-240", "v-19.2" ] ],
+    [ "lcd1:SCL", "esp:22", "orange", [ "h-28.8", "v105.9" ] ],
+    [ "lcd1:SDA", "esp:21", "#8f4814", [ "h-38.4", "v144.2" ] ],
+    [ "lcd1:GND", "esp:GND.2", "black", [ "h-48", "v115.2" ] ]
+  ],
+  "dependencies": {}
+}
